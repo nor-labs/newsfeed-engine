@@ -1,0 +1,13 @@
+[versions]
+snakeyaml = "2.4"
+mockito = "5.16.0"
+slf4j = "2.0.17"
+amazon-software-bom="2.30.6"
+jackson-databind ="2.18.2"
+
+[libraries]
+snakeyaml = {group = "org.yaml", name = "snakeyaml", version.ref = "snakeyaml"}
+mockito-core = {group = "org.mockito", name = "mockito-core", version.ref = "mockito"}
+slf4j = {group = "org.slf4j", name = "slf4j-api", version.ref = "slf4j"}
+amazon-software-bom = {group = "software.amazon.awssdk", name = "bom", version.ref = "amazon-software-bom"}
+jackson-databind = {group = "com.fasterxml.jackson.core", name = "jackson-databind", version.ref = "jackson-databind"}
