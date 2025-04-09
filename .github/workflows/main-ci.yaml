@@ -36,9 +36,7 @@ jobs:
       - name: Docker Build And Push newsfeed crawler service
         run: |
           echo "building newsfeed-crawler"
-          cd engine/api/newsfeed-crawler-service
-          ls
-          docker build -t $ECR_REPOSITORY:${{ env.IMAGE_TAG }}  .
+          docker build -t $ECR_REPOSITORY:${{ env.IMAGE_TAG }} -f engine/api/newsfeed-crawler-service/Dockerfile .
           echo "tagging newsfeed-crawler"
           docker tag $ECR_REPOSITORY:${{ env.IMAGE_TAG }} ${{ steps.login-ecr.outputs.registry }}/${{ env.ECR_REPOSITORY }}:${{ env.IMAGE_TAG }}
           echo "Pushing newsfeed-crawler"
