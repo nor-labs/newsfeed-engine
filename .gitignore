@@ -51,7 +51,7 @@ bin/
 *.tmp
 *.prof
 vendor/
-go.sum
+#go.sum
 *.coverprofile
 *.bench
 .idea/           # GoLand IDE config
