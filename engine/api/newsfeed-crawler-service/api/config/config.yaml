@@ -1,0 +1,10 @@
+config:
+  loader:
+    articleIdentifierPrefix: "urn:nytimes:article:"
+    categoryIdentifierPrefix: "urn:nytimes:cat:"
+    resourceUriPrefix: "https://rss.nytimes.com/services/xml/rss/nyt/"
+  sources:
+    - "World"
+    - "Africa"
+  s3:
+    bucket: "2025-news-feed"
