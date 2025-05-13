@@ -23,6 +23,10 @@ type Config struct {
 	S3Config struct {
 		Bucket string `yaml:"bucket"`
 	} `yaml:"s3"`
+
+	SQS struct {
+		QueueUrl string `yaml:"queueUrl"`
+	} `yaml:"sqs"`
 }
 
 var CONFIGURATIONS Config
