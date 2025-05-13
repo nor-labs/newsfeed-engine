@@ -11,3 +11,4 @@ func Health(ctx *gin.Context){
 		"message":"Healthy",
 	})
 }
+
