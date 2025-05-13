@@ -2,6 +2,7 @@ config:
   loader:
     articleIdentifierPrefix: "urn:nytimes:article:"
     categoryIdentifierPrefix: "urn:nytimes:cat:"
+    authorIdentifierPrefix: "urn:nytimes:author:"
     resourceUriPrefix: "https://rss.nytimes.com/services/xml/rss/nyt/"
   sources:
     - "World"

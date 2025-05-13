@@ -1,11 +1,11 @@
 package utils
 
 import (
-	"fmt"
 	"io"
 	"net/http"
 	"strings"
 
+	"com.learn.newsfeed/newsfeed/api/config"
 	"com.learn.newsfeed/newsfeed/api/model"
 	"github.com/google/uuid"
 )
@@ -22,13 +22,13 @@ func GetContent(url string) (string, error) {
 	defer resp.Body.Close()
 
 	if resp.StatusCode != http.StatusOK {
-		return "", fmt.Errorf("failed to fetch content: %s", resp.Status)
+		return "", err
 	}
 
 	content, err := io.ReadAll(resp.Body)
 	
 	if err != nil {
-		return "", fmt.Errorf("Error reading response body:", err)
+		return "", err
 	}
 
 	return string(content), nil
@@ -51,7 +51,7 @@ func MapNewsFeed(sourceContent model.RSS)(model.NewsFeed){
 		authorList := ExtractAuthors(item.Creator)
 
 		article := model.Article{
-			UniqueIdentifier: 	"urn:nytimes:article:"+uuid.New().String(),
+			UniqueIdentifier: 	config.CONFIGURATIONS.Loader.ArticleIdentifierPrefix + uuid.New().String(),
 			Headline: 			item.Title,
 			ArticleLink: 		item.GUID,
 			Summary: 			item.Description,
@@ -66,7 +66,7 @@ func MapNewsFeed(sourceContent model.RSS)(model.NewsFeed){
 			var categoryList []model.Category			
 			for _, category := range item.Categories {
 				categoryList = append(categoryList, model.Category{
-					Identifier: "urn:nytimes:cat:" + category,
+					Identifier: config.CONFIGURATIONS.Loader.CategoryIdentifierPrefix + category,
 					Value: 		category,
 				})
 			}
@@ -102,7 +102,7 @@ func ExtractAuthors(source string)([]model.Author){
 		author = strings.TrimSpace(author)
 		if author != "" {
 			authors = append(authors, model.Author{
-				AuthorIdentifier: "urn:nytimes:author:"+uuid.New().String() ,
+				AuthorIdentifier: config.CONFIGURATIONS.Loader.AuthorIdentifierPrefix + uuid.New().String() ,
 				Value: author,
 			})
 		}

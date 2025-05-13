@@ -14,7 +14,8 @@ type Config struct {
 	Loader struct {
 		ArticleIdentifierPrefix  string `yaml:"articleIdentifierPrefix"`
 		CategoryIdentifierPrefix string `yaml:"categoryIdentifierPrefix"`  
-		ResourceUriPrefix string `yaml:"resourceUriPrefix"` 
+		AuthorIdentifierPrefix string `yaml:"authorIdentifierPrefix"` 
+		ResourceUriPrefix string `yaml:"resourceUriPrefix"`   
 	} `yaml:"loader"`
 
 	Sources []string `yaml:"sources"`
