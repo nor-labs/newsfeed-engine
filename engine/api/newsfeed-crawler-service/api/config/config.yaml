@@ -9,3 +9,5 @@ config:
     - "Africa"
   s3:
     bucket: "2025-news-feed"
+  sqs:
+    queueUrl: "https://sqs.us-east-1.amazonaws.com/058264382261/urn-news-crawl"

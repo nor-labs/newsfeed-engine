@@ -6,9 +6,11 @@ import (
 	"fmt"
 	"strings"
 	"time"
+
 	"com.learn.newsfeed/newsfeed/api/config"
 	"com.learn.newsfeed/newsfeed/api/model"
 	"com.learn.newsfeed/newsfeed/api/utils"
+	"github.com/google/uuid"
 )
 type LoaderResponse  struct {
 	Success string
@@ -35,11 +37,21 @@ func LoadContent(ctx context.Context)(LoaderResponse){
 		newsFeed := utils.MapNewsFeed(rss)
 	
 		xmlContent, err := xml.MarshalIndent(newsFeed, "", "  ")
-		utils.PutObject(ctx,"2025-news-feed",getFileKey(source),xmlContent)
+		key:=getFileKey(source)
+		utils.PutObject(ctx,config.CONFIGURATIONS.S3Config.Bucket,key,xmlContent)
 	
 		if err != nil {
 			 return LoaderResponse{ Error: "error marshalling NewsFeed to XML:"+ err.Error()}
 		}
+
+		loaderMetadata:= utils.LoaderMetadata{
+			Timestamp: time.Now().String(),
+			ObjectUrl: key,
+			BucketName: config.CONFIGURATIONS.S3Config.Bucket,
+			MessageId: uuid.NewString(),
+		}
+
+		utils.SendMessage(loaderMetadata)
 	}
 
 
