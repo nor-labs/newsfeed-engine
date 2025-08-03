@@ -39,11 +39,12 @@ func MapNewsFeed(sourceContent model.RSS)(model.NewsFeed){
 	var articlesList []model.Article
 	
 	newsFeed := model.NewsFeed{
-		Source: model.Source{
+		Source: model.MetaData{
 			Title: 				sourceContent.Channel.Title,
 			Copyright: 			sourceContent.Channel.Copyright,
 			Language: 			sourceContent.Channel.Language,
 			PublicationDate: 	sourceContent.Channel.PubDate,
+			DocId: "urn:id:"+uuid.New().String(),
 		},
 	}
 	for _, item := range sourceContent.Channel.Items  {

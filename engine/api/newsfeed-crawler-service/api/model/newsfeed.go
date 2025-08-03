@@ -4,17 +4,18 @@ import "encoding/xml"
 
 type NewsFeed struct {
 	XMLName xml.Name `xml:"newsfeed"`
-	Source Source `xml:"source"`
+	Source MetaData `xml:"metadata"`
 	Articles Articles `xml:"articles"`
 
 }
 
-type Source struct{
+type MetaData struct{
 	Title string `xml:"title"`
 	Link string `xml:"link"`
 	Language string `xml:"language"`
 	Copyright string `xml:"copyright"`
 	PublicationDate string `xml:"publicationDate"`
+	DocId string `xml:docId`
 }
 
 type Articles struct {

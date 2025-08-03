@@ -1,5 +1,4 @@
 rootProject.name = "engine"
-include("libs")
 include("api")
 include("api:newsfeed-engine-authentication-service")
 findProject(":api:newsfeed-engine-authentication-service")?.name = "newsfeed-engine-authentication-service"
@@ -9,3 +8,5 @@ include("api:newsfeed-parser-service")
 findProject(":api:newsfeed-parser-service")?.name = "newsfeed-parser-service"
 include("api:newsfeed-searcher-service")
 findProject(":api:newsfeed-searcher-service")?.name = "newsfeed-searcher-service"
+
+include("libs:content-fetcher")

@@ -4,6 +4,9 @@ mockito = "5.16.0"
 slf4j = "2.0.17"
 amazon-software-bom="2.30.6"
 jackson-databind ="2.18.2"
+vertxVersion ="2.18.2"
+saxon ="12.7"
+snake-yaml-version ="2.4"
 
 [libraries]
 snakeyaml = {group = "org.yaml", name = "snakeyaml", version.ref = "snakeyaml"}
@@ -11,3 +14,6 @@ mockito-core = {group = "org.mockito", name = "mockito-core", version.ref = "moc
 slf4j = {group = "org.slf4j", name = "slf4j-api", version.ref = "slf4j"}
 amazon-software-bom = {group = "software.amazon.awssdk", name = "bom", version.ref = "amazon-software-bom"}
 jackson-databind = {group = "com.fasterxml.jackson.core", name = "jackson-databind", version.ref = "jackson-databind"}
+vertx = {group = "io.vertx", name = "vertx-stack-depchain", version.ref = "vertxVersion"}
+saxon-parser = {group = "net.sf.saxon", name = "Saxon-HE", version.ref = "saxon"}
+snake-yaml = {group = "org.yaml", name = "snakeyaml", version.ref = "snake-yaml-version"}
