@@ -5,15 +5,12 @@ import com.learn.newsfeed.model.DocMeta;
 import com.learn.newsfeed.model.Document;
 import com.learn.newsfeed.util.XPathConstants;
 import net.sf.saxon.s9api.*;
-
 import javax.xml.transform.stream.StreamSource;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-
 public class SaxonExtractor implements Extractor {
 
     private final XPathCompiler xpathCompiler;

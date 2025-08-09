@@ -1,7 +1,7 @@
 package com.learn.newsfeed.handlers;
 
 import com.learn.newsfeed.model.Document;
-import com.learn.newsfeed.util.SqsService;
+import com.learn.newsfeed.parser.ParserProcessor;
 import io.vertx.core.Handler;
 import io.vertx.core.buffer.Buffer;
 import io.vertx.core.json.Json;
@@ -11,15 +11,15 @@ import java.util.List;
 import java.util.function.Supplier;
 
 public class PollHandler implements Handler<RoutingContext> {
-    private final Supplier<SqsService> sqsServiceSupplier;
+    private final Supplier<ParserProcessor> processorSupplier;
 
-    public PollHandler(Supplier<SqsService> sqsServiceSupplier) {
-        this.sqsServiceSupplier = sqsServiceSupplier;
+    public PollHandler(Supplier<ParserProcessor> processorSupplier) {
+        this.processorSupplier = processorSupplier;
     }
 
     @Override
     public void handle(RoutingContext ctx) {
-        List<Document> results = sqsServiceSupplier.get().poll();
+        List<Document> results = processorSupplier.get().process();
         String json = Json.encode(results);
         ctx.response()
                 .putHeader("content-type", "application/json")

@@ -2,7 +2,7 @@ package com.learn.newsfeed.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class SqsMessage {
+public class EventMessage {
     @JsonProperty("Timestamp")
     private String timestamp;
 
@@ -15,10 +15,10 @@ public class SqsMessage {
     @JsonProperty("MessageId")
     private String messageId;
 
-    public SqsMessage() {
+    public EventMessage() {
     }
 
-    public SqsMessage(String timestamp, String objectUrl, String bucketName, String messageId) {
+    public EventMessage(String timestamp, String objectUrl, String bucketName, String messageId) {
         this.timestamp = timestamp;
         this.objectUrl = objectUrl;
         this.bucketName = bucketName;
