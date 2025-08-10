@@ -37,8 +37,19 @@ jobs:
         run: |
           echo "building newsfeed-crawler"
           cd engine/api/newsfeed-crawler-service
-          docker build -t $ECR_REPOSITORY:${{ env.IMAGE_TAG }}  .
+          docker build -t newsfeed-crawler-service:${{ env.IMAGE_TAG }}  .
           echo "tagging newsfeed-crawler"
-          docker tag $ECR_REPOSITORY:${{ env.IMAGE_TAG }} ${{ steps.login-ecr.outputs.registry }}/${{ env.ECR_REPOSITORY }}:${{ env.IMAGE_TAG }}
+          docker tag newsfeed-crawler-service:${{ env.IMAGE_TAG }} ${{ steps.login-ecr.outputs.registry }}/${{ newsfeed-crawler-service }}:${{ env.IMAGE_TAG }}
           echo "Pushing newsfeed-crawler"
-          docker push ${{ steps.login-ecr.outputs.registry }}/${{ env.ECR_REPOSITORY }}:${{ env.IMAGE_TAG }}
+          docker push ${{ steps.login-ecr.outputs.registry }}/${{ newsfeed-crawler-service }}:${{ env.IMAGE_TAG }}
+          
+      - name: Docker Build And Push newsfeed-parser-service
+        run: |
+          echo "building newsfeed-parser-service"
+          cd engine/api/newsfeed-parser-service
+          docker build -t newsfeed-parser-service:${{ env.IMAGE_TAG }}  .
+          echo "tagging newsfeed-parser-service"
+          docker tag newsfeed-parser-service:${{ env.IMAGE_TAG }} ${{ steps.login-ecr.outputs.registry }}/${{ newsfeed-parser-service }}:${{ env.IMAGE_TAG }}
+          echo "Pushing newsfeed-parser-service"
+          docker push ${{ steps.login-ecr.outputs.registry }}/${{ newsfeed-parser-service }}:${{ env.IMAGE_TAG }}
+          
