@@ -15,7 +15,7 @@ RUN go mod download
 COPY . .
 
 
-RUN go build -o main ./cmd
+RUN go build -o main ./api/cmd
 
 
 EXPOSE 3000
