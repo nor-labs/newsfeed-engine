@@ -8,6 +8,6 @@ config:
     - "World"
     - "Africa"
   s3:
-    bucket: "2025-news-feed"
+    bucket: "${NEWS_FEED_S3_BUCKET}"
   sqs:
-    queueUrl: "https://sqs.us-east-1.amazonaws.com/058264382261/urn-news-crawl"
+    queueUrl: "${SQS_QUEUE_URL}"

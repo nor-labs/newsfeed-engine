@@ -33,13 +33,13 @@ var CONFIGURATIONS Config
 
 func LoadConfig(){
 	path := filepath.Join("api", "config", "config.yaml")
-	yamlFile , err := os.ReadFile(path)
+	yamlBytes , err := os.ReadFile(path)
 	if err != nil {
 		panic(err)
 	}
-
+	yamlString := os.ExpandEnv(string(yamlBytes))
 	var wrapper Wrapper
-	err = yaml.Unmarshal(yamlFile, &wrapper)
+	err = yaml.Unmarshal([]byte(yamlString), &wrapper)
 	if err != nil {
 		panic(err)
 	}
