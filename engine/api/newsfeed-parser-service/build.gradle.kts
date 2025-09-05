@@ -25,7 +25,6 @@ application {
 }
 
 dependencies {
-  // https://mvnrepository.com/artifact/net.sf.saxon/Saxon-HE
   implementation(libs.saxon.parser)
   implementation(libs.snakeyaml)
   implementation(libs.jackson.databind)
@@ -36,7 +35,7 @@ dependencies {
   implementation(platform("io.vertx:vertx-stack-depchain:$vertxVersion"))
   implementation("io.vertx:vertx-launcher-application")
   implementation("io.vertx:vertx-web")
-//  implementation("io.vertx:vertx-config")
+  implementation(project(":libs:event-log-lib"))
   implementation("io.vertx:vertx-config-yaml")
   testImplementation("io.vertx:vertx-junit5")
   testImplementation("org.junit.jupiter:junit-jupiter:$junitJupiterVersion")

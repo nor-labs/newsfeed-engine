@@ -7,6 +7,7 @@ jackson-databind ="2.18.2"
 vertxVersion ="2.18.2"
 saxon ="12.7"
 snake-yaml-version ="2.4"
+solr-solrj ="9.8.0"
 
 [libraries]
 snakeyaml = {group = "org.yaml", name = "snakeyaml", version.ref = "snakeyaml"}
@@ -17,3 +18,4 @@ jackson-databind = {group = "com.fasterxml.jackson.core", name = "jackson-databi
 vertx = {group = "io.vertx", name = "vertx-stack-depchain", version.ref = "vertxVersion"}
 saxon-parser = {group = "net.sf.saxon", name = "Saxon-HE", version.ref = "saxon"}
 snake-yaml = {group = "org.yaml", name = "snakeyaml", version.ref = "snake-yaml-version"}
+solr-solrj = {group = "org.apache.solr", name = "solr-solrj", version.ref = "solr-solrj"}

@@ -1,0 +1,6 @@
+solr:
+  serverUrl: ${SOLR_URL:http://localhost:8983/solr}
+  collection: ${INDEX_COLLECTION:news_articles}
+index:
+  batchSize: ${BATCH_SIZE:5}
+  loaderType: solr

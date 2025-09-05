@@ -9,6 +9,8 @@ import javax.xml.transform.stream.StreamSource;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.StringReader;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 public class SaxonExtractor implements Extractor {
@@ -77,7 +79,7 @@ public class SaxonExtractor implements Extractor {
 
     private DocMeta extractDocmeta() throws SaxonApiException {
         String docId = extractField(XPathConstants.DOC_ID);
-        String publicationDate = extractField(XPathConstants.PUBLICATION_DATE);
+        String publicationDate = formatDate(extractField(XPathConstants.PUBLICATION_DATE));
         String copyright = extractField(XPathConstants.COPYRIGHT);
         String sourceTitle = extractField(XPathConstants.SOURCE_TITLE);
 
@@ -97,7 +99,7 @@ public class SaxonExtractor implements Extractor {
             String headline = extractField(XPathConstants.ARTICLE_HEADLINE, articleNode);
             String articleLink = extractField( XPathConstants.ARTICLE_LINK, articleNode);
             String summary = extractField(XPathConstants.ARTICLE_SUMMARY, articleNode);
-            String publicationDate = extractField(XPathConstants.ARTICLE_PUBLICATION_DATE, articleNode);
+            String publicationDate = formatDate(extractField(XPathConstants.ARTICLE_PUBLICATION_DATE, articleNode));
             List<String> authors =extractListField(XPathConstants.ARTICLE_AUTHORS, articleNode);
             List<String> categories =extractListField(XPathConstants.ARTICLE_CATEGORIES, articleNode);
             articleList.add(new Article(id,headline,articleLink,summary,publicationDate,authors,categories));
@@ -132,6 +134,12 @@ public class SaxonExtractor implements Extractor {
             result.add(item.getStringValue());
         }
         return result;
+    }
+
+    private String formatDate(String input){
+        ZonedDateTime zdt = ZonedDateTime.parse(input, DateTimeFormatter.RFC_1123_DATE_TIME);
+        return  zdt.format(DateTimeFormatter.ISO_INSTANT);
+
     }
 
 }

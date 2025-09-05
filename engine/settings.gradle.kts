@@ -10,3 +10,5 @@ include("api:newsfeed-searcher-service")
 findProject(":api:newsfeed-searcher-service")?.name = "newsfeed-searcher-service"
 
 include("libs:content-fetcher")
+
+include("libs:event-log-lib")
