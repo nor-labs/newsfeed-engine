@@ -18,8 +18,13 @@ java {
 }
 
 dependencies {
+    implementation(libs.solr.solrj)
     implementation(project(":libs:event-log-lib"))
     implementation("org.springframework.boot:spring-boot-starter-web")
+    implementation("org.eclipse.jetty:jetty-client:11.0.15")
+    implementation("org.eclipse.jetty:jetty-http:11.0.15")
+    implementation("org.eclipse.jetty:jetty-io:11.0.15")
+    implementation("org.eclipse.jetty:jetty-util:11.0.15")
     developmentOnly("org.springframework.boot:spring-boot-devtools")
     testImplementation(libs.mockito.core)
     testImplementation("org.springframework.boot:spring-boot-starter-test")

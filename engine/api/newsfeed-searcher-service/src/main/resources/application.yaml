@@ -1,0 +1,5 @@
+solr:
+  serverUrl: ${SOLR_SERVER_URL:http://localhost:8983/solr}
+  collection: ${INDEX_COLLECTION:news_articles}
+  connectionTimeout: ${CONNECTION_TIMEOUT:10}
+  idleTimeout: ${IDLE_TIMEOUT:5}
