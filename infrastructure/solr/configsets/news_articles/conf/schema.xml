@@ -124,7 +124,6 @@
 
     <field name="_text_" type="text_general" indexed="true" stored="false" multiValued="true"/>
     <!-- Core Article Fields -->
-    <field name="article_id" type="string" indexed="true" stored="true" required="true" multiValued="false"/>
     <field name="headline" type="text_general" indexed="true" stored="true" required="false" multiValued="false"/>
     <field name="articleLink" type="string" indexed="true" stored="true" required="false" multiValued="false"/>
     <field name="summary" type="text_general" indexed="true" stored="true" required="false" multiValued="false"/>

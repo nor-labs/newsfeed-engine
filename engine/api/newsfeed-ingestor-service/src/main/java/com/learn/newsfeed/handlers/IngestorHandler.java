@@ -3,7 +3,6 @@ package com.learn.newsfeed.handlers;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.learn.newsfeed.logging.EventLog;
-import com.learn.newsfeed.repository.IndexRepository;
 import com.learn.newsfeed.service.IndexService;
 import io.vertx.core.Handler;
 import io.vertx.ext.web.RoutingContext;
